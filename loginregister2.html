@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" id="username" />
+      <input type="text" id="password" />
+      <input type="submit" value="login" />
+    </form>
+
+    <script>
+      var form = document.forms[0];
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        var username_log = e.target[0].value;
+        var password_log = e.target[1].value;
+
+        console.log(username_log , password_log);
+
+        var reg_data=JSON.parse(localStorage.getItem("cred"));
+        console.log(reg_data);
+
+        var arr=reg_data.filter((val,ind)=>{
+            return val.user==username_log;
+        });
+        
+        if(arr.length==0){
+            alert("username does't exist");
+            window.location.assign("./loginregister1")
+        }else
+        {
+
+            
+        var [p]=arr;  // De-structure
+
+console.log(p);
+
+if(password_log==p.password){
+    alert("success");
+    window.location.assign("./miniproject.html");
+}
+else{
+    alert("please provide proper credential")
+}
+        }
+
+
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" id="username" />
+      <input type="text" id="password" />
+      <input type="button" value="Register" id="btn" />
+    </form>
+
+    <script>
+      var btn = document.getElementById("btn");
+
+      console.log(btn);
+
+      var arr = [];
+
+      btn.addEventListener("click", function () {
+        var username = document.getElementById("username");
+
+        var user = username.value; // like element inner text  change chesi nattu
+
+        var password = document.getElementById("password");
+
+        var pas = password.value;
+
+        // console.log(username , password);
+
+        if (user == "" || pas == "") {
+          //&&
+          alert("please provide username and password");
+        } else {
+          var obj = {
+            user: user,
+
+            password: pas,
+          };
+
+          arr.push(obj);
+
+          console.log("obj");
+          localStorage.setItem("cred", JSON.stringify(arr));
+        }
+
+        if (user.length || pas.length < 8) {
+          alert(
+            "please enter the user name and password must be contain more then 8 chars"
+          );
+        } else {
+          alert("form submitted");
+        }
+
+        username.value = "";
+
+        password.value = "";
+      });
+    </script>
+  </body>
+</html>

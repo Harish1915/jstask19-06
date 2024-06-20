@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text"  id="username">
+        <input type="text"  id="password">
+        <input type="button" value="login" id="btn">
+
+    </form>
+
+    <script>
+var btn=document.getElementById("btn");
+
+console.log(btn);
+
+btn.addEventListener("click",function(){
+
+    var username=document.getElementById("username");
+
+    var user = username.value;    // like element inner text  change chesi nattu 
+
+    var password=document.getElementById("password");
+
+    var pas = password.value;
+
+    // console.log(username , password);
+
+    var obj={
+        user:user,
+        password:pas
+    }
+    console.log("obj");
+    localStorage.setItem("cred",JSON.stringify(obj));
+    username.value="";
+    password.value="";
+
+})
+
+
+
+        
+    </script>
+</body>
+</html>
